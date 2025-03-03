@@ -1,15 +1,17 @@
-package com.example.demo.service;
+package com.example.demo.service.ServiceImpl;
 
 import com.example.demo.dto.UserDTO;
-import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class UserServiceImpl implements UserService{
+@Service
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;

@@ -10,7 +10,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public List<UserDTO> getUsers() {
