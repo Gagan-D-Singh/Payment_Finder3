@@ -12,4 +12,8 @@ import java.util.List;
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
     @Query("SELECT p FROM Payment p WHERE p.user.userId = :userId")
     List<Payment> findPaymentsByUserId(@Param("userId") Long userId);
+
+
+
+    //equivalent to SELECT * FROM Payments WHERE Payments.user_id = userID;
 }
