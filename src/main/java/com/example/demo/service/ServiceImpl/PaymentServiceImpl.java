@@ -27,4 +27,17 @@ public class PaymentServiceImpl implements PaymentService {
                         .build())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<PaymentDTO> getUserLastFivePayments(Long userId) {
+        return paymentRepository.findLastFivePaymentsByUserId(userId)
+                .stream()
+                .map(payment -> PaymentDTO.builder()
+                        .paymentId(payment.getPaymentId())
+                        .paymentAmount(payment.getPaymentAmount())
+                        .paymentDate(payment.getPaymentDate())
+                        .paymentMethod(payment.getPaymentMethod())
+                        .paymentStatus(payment.getPaymentStatus())
+                        .build()).collect(Collectors.toList());
+    }
 }

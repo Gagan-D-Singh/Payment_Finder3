@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface BillingRepository extends JpaRepository<Billing, Long> {
-//    @Query("SELECT b FROM Billing b WHERE b.user.userId = :userId")
-//    List<Billing> findBillingByUserId(@Param("userId") Long userId);
+    @Query("SELECT b FROM Billing b WHERE b.account.accountId IN " +
+            "(SELECT a.accountId FROM Account a WHERE a.user.userId = :userId) " +
+            "AND b.dueDate < CURRENT_DATE")
+    List<Billing> findOverdueBillsByUser(@Param("userId") Long userId);
 }

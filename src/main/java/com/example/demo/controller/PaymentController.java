@@ -20,5 +20,10 @@ public class PaymentController {
     public List<PaymentDTO> getUserPayments(@PathVariable Long userId) {
         return paymentService.getUserPayments(userId);
     }
+
+    @GetMapping("/user/last5payments/{userId}")
+    public List<PaymentDTO> getUserLastFivePayments(@PathVariable Long userId) {
+        return paymentService.getUserLastFivePayments(userId);
+    }
 }
 

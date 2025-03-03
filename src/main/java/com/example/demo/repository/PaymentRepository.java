@@ -13,7 +13,8 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
     @Query("SELECT p FROM Payment p WHERE p.user.userId = :userId")
     List<Payment> findPaymentsByUserId(@Param("userId") Long userId);
 
-
+    @Query("SELECT p FROM Payment p WHERE p.user.userId = :userId order by p.paymentDate DESC LIMIT 5")
+    List<Payment> findLastFivePaymentsByUserId(@Param("userId") Long userId);
 
     //equivalent to SELECT * FROM Payments WHERE Payments.user_id = userID;
 }
