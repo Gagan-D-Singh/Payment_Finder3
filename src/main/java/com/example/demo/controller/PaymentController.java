@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.AccountBalanceDTO;
 import com.example.demo.dto.PaymentDTO;
 import com.example.demo.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +17,9 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+    @GetMapping("/lastFiveTransactions/{accountNumber}")
+    AccountBalanceDTO getLastFivePayments(@PathVariable String accountNumber){
+        return paymentService.getLastFiveTransactions(accountNumber);
+    }
 }
 
