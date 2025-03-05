@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    List<UserDTO> getAllUsers();
-    Optional<UserDTO> getUserByEmail(String email);
     Object[] getUserBlockedReasonStatus(String email);
     String getLastAccUpdated(String email);
 }

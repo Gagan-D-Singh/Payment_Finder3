@@ -13,12 +13,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByEmail(String email);
-
-    // Below is the equivalent query of the above statement.
-    // So instead if userid, it now searches for email.
-    //SELECT * FROM users WHERE email = 'alice@mail.com' LIMIT 1;
-
     @Query(value = "SELECT status, reason FROM users WHERE email = :emailId", nativeQuery = true)
     Object[] findBlockedSuspendedReasonStatus(@Param("emailId") String emailId);
 

@@ -11,13 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/account")
 public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @GetMapping("/user/{userId}")
-    List<AccountDTO> getUserAccounts(@PathVariable Long userId){
-        return accountService.getUserAccounts(userId);
-    }
 }

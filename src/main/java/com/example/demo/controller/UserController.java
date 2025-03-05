@@ -13,16 +13,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<UserDTO> getUsers() {
-        return userService.getAllUsers();
-    }
-
-    @GetMapping("/{email}")
-    public Optional<UserDTO> getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email);
-    }
-
     //1st Query
     @GetMapping("/status/{emailId}")
     public Object[] getUserBlockedReasonStatus(@PathVariable String emailId){

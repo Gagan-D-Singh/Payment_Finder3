@@ -14,43 +14,4 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     PaymentRepository paymentRepository;
 
-    @Override
-    public List<PaymentDTO> getUserPayments(Long userId) {
-        return paymentRepository.findPaymentsByUserId(userId)
-                .stream()
-                .map(payment -> PaymentDTO.builder()
-                        .paymentId(payment.getPaymentId())
-                        .paymentAmount(payment.getPaymentAmount())
-                        .paymentDate(payment.getPaymentDate())
-//                        .paymentMethod(payment.getPaymentMethod())
-//                        .paymentStatus(payment.getPaymentStatus())
-                        .build())
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PaymentDTO> getUserLastFivePayments(Long userId) {
-        return paymentRepository.findLastFivePaymentsByUserId(userId)
-                .stream()
-                .map(payment -> PaymentDTO.builder()
-                        .paymentId(payment.getPaymentId())
-                        .paymentAmount(payment.getPaymentAmount())
-                        .paymentDate(payment.getPaymentDate())
-                        //.paymentMethod(payment.getPaymentMethod())
-                        //.paymentStatus(payment.getPaymentStatus())
-                        .build()).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PaymentDTO> getPendingPayments(Long accountId) {
-        return paymentRepository.findPendingPaymentsForAccount(accountId)
-                .stream()
-                .map(payment -> PaymentDTO.builder()
-                        .paymentId(payment.getPaymentId())
-                        .paymentAmount(payment.getPaymentAmount())
-                        //.paymentMethod(payment.getPaymentMethod())
-                        //.paymentStatus(payment.getPaymentStatus())
-                        .paymentDate(payment.getPaymentDate())
-                        .build()).collect(Collectors.toList());
-    }
 }

@@ -15,16 +15,4 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountRepository accountRepository;
 
-    @Override
-    public List<AccountDTO> getUserAccounts(Long userId) {
-        return accountRepository.findAccountByUserId(userId)
-                .stream()
-                .map(account -> AccountDTO.builder()
-                        .accountId(account.getAccountId())
-                        .accountNumber(account.getAccountNumber())
-                        .accountBalance(account.getAccountBalance())
-//                        .accountType(account.getAccountType())
-                        .build())
-                .collect(Collectors.toList());
-    }
 }

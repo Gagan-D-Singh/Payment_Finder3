@@ -15,16 +15,4 @@ public class BillingServiceImpl implements BillingService {
     @Autowired
     BillingRepository billingRepository;
 
-    @Override
-    public List<BillingDTO> getOverdueBillByUser(Long userId) {
-        return billingRepository.findOverdueBillsByUser(userId)
-                .stream()
-                .map(billing -> BillingDTO.builder()
-                        .billingId(billing.getBillingId())
-                        .billingDate(billing.getBillingDate())
-                        .billingAmount(billing.getBillingAmount())
-                        .billingDescription(billing.getBillingDescription())
-                        .dueDate(billing.getDueDate())
-                        .build()).collect(Collectors.toList());
-    }
 }

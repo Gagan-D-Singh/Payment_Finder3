@@ -17,8 +17,4 @@ public class BillingController {
     @Autowired
     BillingService billingService;
 
-    @GetMapping("/dueBill/{userId}")
-    List<BillingDTO> getOverdueBillsByUser(@PathVariable Long userId){
-        return billingService.getOverdueBillByUser(userId);
-    }
 }

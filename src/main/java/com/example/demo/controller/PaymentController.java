@@ -16,19 +16,5 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping("/user/{userId}")
-    public List<PaymentDTO> getUserPayments(@PathVariable Long userId) {
-        return paymentService.getUserPayments(userId);
-    }
-
-    @GetMapping("/user/last5payments/{userId}")
-    public List<PaymentDTO> getUserLastFivePayments(@PathVariable Long userId) {
-        return paymentService.getUserLastFivePayments(userId);
-    }
-
-    @GetMapping("/account/pending/{accountId}")
-    public List<PaymentDTO> getPendingPaymentsByAccount(@PathVariable Long accountId){
-        return paymentService.getPendingPayments(accountId);
-    }
 }
 
