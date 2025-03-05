@@ -25,5 +25,10 @@ public class PaymentController {
     public List<PaymentDTO> getUserLastFivePayments(@PathVariable Long userId) {
         return paymentService.getUserLastFivePayments(userId);
     }
+
+    @GetMapping("/account/pending/{accountId}")
+    public List<PaymentDTO> getPendingPaymentsByAccount(@PathVariable Long accountId){
+        return paymentService.getPendingPayments(accountId);
+    }
 }
 

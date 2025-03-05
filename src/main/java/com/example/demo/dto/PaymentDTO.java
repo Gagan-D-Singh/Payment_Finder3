@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -17,4 +18,6 @@ public class PaymentDTO {
     private LocalDate paymentDate;
     private String paymentMethod;
     private String paymentStatus;
+    private String failureReason;
+    private LocalDateTime nextRetryDate;
 }

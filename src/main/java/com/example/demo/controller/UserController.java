@@ -22,5 +22,17 @@ public class UserController {
     public Optional<UserDTO> getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
+
+    //1st Query
+    @GetMapping("/status/{emailId}")
+    public Object[] getUserBlockedReasonStatus(@PathVariable String emailId){
+        return userService.getUserBlockedReasonStatus(emailId);
+    }
+
+    //3rd Query
+    @GetMapping("/lastUpdated/{emailId}")
+    public String getLastAccUpdated(@PathVariable String emailId){
+        return userService.getLastAccUpdated(emailId);
+    }
 }
 

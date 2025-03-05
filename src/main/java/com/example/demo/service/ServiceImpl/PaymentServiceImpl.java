@@ -22,8 +22,8 @@ public class PaymentServiceImpl implements PaymentService {
                         .paymentId(payment.getPaymentId())
                         .paymentAmount(payment.getPaymentAmount())
                         .paymentDate(payment.getPaymentDate())
-                        .paymentMethod(payment.getPaymentMethod())
-                        .paymentStatus(payment.getPaymentStatus())
+//                        .paymentMethod(payment.getPaymentMethod())
+//                        .paymentStatus(payment.getPaymentStatus())
                         .build())
                 .collect(Collectors.toList());
     }
@@ -36,8 +36,21 @@ public class PaymentServiceImpl implements PaymentService {
                         .paymentId(payment.getPaymentId())
                         .paymentAmount(payment.getPaymentAmount())
                         .paymentDate(payment.getPaymentDate())
-                        .paymentMethod(payment.getPaymentMethod())
-                        .paymentStatus(payment.getPaymentStatus())
+                        //.paymentMethod(payment.getPaymentMethod())
+                        //.paymentStatus(payment.getPaymentStatus())
+                        .build()).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PaymentDTO> getPendingPayments(Long accountId) {
+        return paymentRepository.findPendingPaymentsForAccount(accountId)
+                .stream()
+                .map(payment -> PaymentDTO.builder()
+                        .paymentId(payment.getPaymentId())
+                        .paymentAmount(payment.getPaymentAmount())
+                        //.paymentMethod(payment.getPaymentMethod())
+                        //.paymentStatus(payment.getPaymentStatus())
+                        .paymentDate(payment.getPaymentDate())
                         .build()).collect(Collectors.toList());
     }
 }

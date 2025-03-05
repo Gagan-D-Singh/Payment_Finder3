@@ -23,7 +23,7 @@ public class AccountServiceImpl implements AccountService {
                         .accountId(account.getAccountId())
                         .accountNumber(account.getAccountNumber())
                         .accountBalance(account.getAccountBalance())
-                        .accountType(account.getAccountType())
+//                        .accountType(account.getAccountType())
                         .build())
                 .collect(Collectors.toList());
     }

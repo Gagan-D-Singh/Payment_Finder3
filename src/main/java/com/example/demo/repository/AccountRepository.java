@@ -12,4 +12,8 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query("SELECT a FROM Account a WHERE a.user.userId = :userId")
     List<Account> findAccountByUserId(@Param("userId") Long userId);
+
+
+    @Query(value = "SELECT account_balance FROM accounts WHERE account_number = :accountNumber;")
+    Double findAccountBalance(@Param("accountNumber") String accountNumber);
 }

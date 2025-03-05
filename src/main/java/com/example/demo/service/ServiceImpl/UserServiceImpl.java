@@ -6,6 +6,8 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,5 +42,37 @@ public class UserServiceImpl implements UserService {
                         .phone(user.getPhone())
                         .address(user.getAddress())
                         .build());
+    }
+
+    @Override
+    public Object[] getUserBlockedReasonStatus(String email) {
+        Object[] result = userRepository.findBlockedSuspendedReasonStatus(email);
+
+        if(result == null){
+            return new Object[]{"Not Found", "User does not exist"};
+        }
+        return result;
+    }
+
+    @Override
+    public String getLastAccUpdated(String email) {
+        LocalDateTime result = userRepository.findLastUpdated(email);
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        long days_difference = ChronoUnit.DAYS.between(result, currentDateTime);
+
+        if(days_difference > 3){
+            return "You can contact customer care for the support.";
+        }
+        else{
+            return "Kindly wait, your will start receiving notifications on your new contact number within 3 working days";
+        }
+
+//        if(result.isBefore(currentDateTime)){
+//            return "Kindly wait, your will start receiving notifications on your new contact number within 3 working days";
+//        }
+//        else{
+//            return "You can contact customer care for the support.";
+//        }
     }
 }
