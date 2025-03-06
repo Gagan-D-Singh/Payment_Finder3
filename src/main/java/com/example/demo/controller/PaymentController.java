@@ -17,9 +17,16 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+    //4th Query
     @GetMapping("/lastFiveTransactions/{accountNumber}")
     AccountBalanceDTO getLastFivePayments(@PathVariable String accountNumber){
         return paymentService.getLastFiveTransactions(accountNumber);
     }
+
+    @GetMapping("/lastSevenTransactions/{accountNumber}")
+    List<PaymentDTO> getLastSevenPayments(@PathVariable String accountNumber){
+        return paymentService.getLastSevenTransactions(accountNumber);
+    }
+
 }
 

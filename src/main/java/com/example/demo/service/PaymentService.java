@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PaymentService {
     AccountBalanceDTO getLastFiveTransactions(String accountNumber);
+    List<PaymentDTO> getLastSevenTransactions(String accountNUmber);
 }

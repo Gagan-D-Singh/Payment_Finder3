@@ -24,5 +24,12 @@ public class UserController {
     public String getLastAccUpdated(@PathVariable String emailId){
         return userService.getLastAccUpdated(emailId);
     }
+
+    //6th Query
+    @GetMapping("/declineReason/{emailId}")
+    public Object[] getDeclineReason(@PathVariable String emailId){
+        return userService.getUserBlockedReasonStatus(emailId);
+    }
+
 }
 

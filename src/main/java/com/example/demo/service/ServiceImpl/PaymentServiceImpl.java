@@ -20,7 +20,6 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     AccountRepository accountRepository;
 
-
     @Override
     public AccountBalanceDTO getLastFiveTransactions(String accountNumber) {
         Double amount = accountRepository.findAccountBalance(accountNumber);
@@ -36,5 +35,18 @@ public class PaymentServiceImpl implements PaymentService {
                 .build()).collect(Collectors.toList());
 
         return new AccountBalanceDTO(amount, lastFiveTransaction);
+    }
+
+    @Override
+    public List<PaymentDTO> getLastSevenTransactions(String accountNUmber) {
+        return paymentRepository.findLastSevenTransactions(accountNUmber).stream().map(payment -> PaymentDTO.builder()
+                .paymentId(payment.getPaymentId())
+                .paymentAmount(payment.getPaymentAmount())
+                .paymentDate(payment.getPaymentDate())
+                .paymentMethod(payment.getPaymentMethod().name())
+                .paymentStatus(payment.getPaymentStatus().name())
+                .failureReason(payment.getFailureReason())
+                .nextRetryDate(payment.getNextRetryData())
+                .build()).collect(Collectors.toList());
     }
 }
